@@ -1,7 +1,6 @@
 package com.smb.population.entities;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class City extends BaseEntity {
 
@@ -9,7 +8,7 @@ public class City extends BaseEntity {
 		
 	private Integer population;
 	
-	public City(UUID id, String name, Province province, Integer population, Date createdAt, Date updatedAt) {
+	public City(Integer id, String name, Province province, Integer population, Date createdAt, Date updatedAt) {
 		super(id, name, createdAt, updatedAt);
 		this.province = province;
 		this.population = population;

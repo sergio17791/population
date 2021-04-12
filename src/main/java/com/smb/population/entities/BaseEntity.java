@@ -1,11 +1,10 @@
 package com.smb.population.entities;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class BaseEntity {
 
-	private UUID id;
+	private Integer id;
 	
 	private String name;
 	
@@ -13,7 +12,7 @@ public class BaseEntity {
 	
 	private Date updatedAt;
 	
-	public BaseEntity(UUID id, String name, Date createdAt, Date updatedAt) {
+	public BaseEntity(Integer id, String name, Date createdAt, Date updatedAt) {
 		this.id = id;
 		this.name = name;
 		this.createdAt = createdAt;
@@ -23,14 +22,14 @@ public class BaseEntity {
 	/**
 	 * @return the id
 	 */
-	public UUID getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(UUID id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
