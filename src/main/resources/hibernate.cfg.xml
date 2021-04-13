@@ -9,6 +9,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <mapping class="com.smb.population.entities.City"/>
         <mapping class="com.smb.population.entities.Province"/>
     </session-factory>
