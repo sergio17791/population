@@ -2,15 +2,36 @@ package com.smb.population.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+@MappedSuperclass
 public class BaseEntity {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 	
+	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@CreationTimestamp
+	@Column(name = "created_at", updatable = false, nullable = false)
 	private Date createdAt;
 	
+	@UpdateTimestamp
+	@Column(name = "updated_at", nullable = false)
 	private Date updatedAt;
+	
+	public BaseEntity() {
+		
+	}
 	
 	public BaseEntity(Integer id, String name, Date createdAt, Date updatedAt) {
 		this.id = id;

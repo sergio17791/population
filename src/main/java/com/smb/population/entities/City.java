@@ -8,6 +8,10 @@ public class City extends BaseEntity {
 		
 	private Integer population;
 	
+	public City() {
+		super();
+	}
+	
 	public City(Integer id, String name, Province province, Integer population, Date createdAt, Date updatedAt) {
 		super(id, name, createdAt, updatedAt);
 		this.province = province;
