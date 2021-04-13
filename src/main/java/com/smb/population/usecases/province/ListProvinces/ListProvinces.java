@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.smb.population.dao.ProvinceDAO;
 import com.smb.population.entities.Province;
-import com.smb.population.exceptions.PopulationException;
+import com.smb.population.exceptions.ListObjectsException;
 
 public class ListProvinces {
 	
@@ -14,7 +14,7 @@ public class ListProvinces {
 		this.provinceDAO = provinceDAO;
 	}
 	
-	public ListProvincesResponse execute() throws PopulationException {
+	public ListProvincesResponse execute() throws ListObjectsException {
 		
 		List<Province> provinces = this.provinceDAO.listAll();
 		

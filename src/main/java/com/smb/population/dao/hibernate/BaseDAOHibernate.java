@@ -12,7 +12,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.smb.population.dao.BaseDAO;
-import com.smb.population.exceptions.PopulationException;
+import com.smb.population.exceptions.GetObjectException;
+import com.smb.population.exceptions.ListObjectsException;
 import com.smb.population.utils.HibernateUtils;
 
 public class BaseDAOHibernate<T, ID extends Serializable> implements BaseDAO<T, ID> {
@@ -31,7 +32,7 @@ public class BaseDAOHibernate<T, ID extends Serializable> implements BaseDAO<T, 
     }  
 
 	@Override
-	public T get(ID id) throws PopulationException {
+	public T get(ID id) throws GetObjectException {
 		
 		Session session = HibernateUtils.getSessionFactory().openSession();
 		Transaction transaction = null;
@@ -51,7 +52,7 @@ public class BaseDAOHibernate<T, ID extends Serializable> implements BaseDAO<T, 
 				LOGGER.log(Level.WARNING,"Rollback on get failed", ex);
 			} 			
 			
-			throw new PopulationException(hibernateException);
+			throw new GetObjectException(hibernateException);
 			
 		} finally {
 			session.close();
@@ -60,7 +61,7 @@ public class BaseDAOHibernate<T, ID extends Serializable> implements BaseDAO<T, 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> listAll() throws PopulationException {
+	public List<T> listAll() throws ListObjectsException {
 		
 		Session session = HibernateUtils.getSessionFactory().openSession();
 		String queryStr = "from " + getPersistentClass().getName() + " entity";
@@ -69,7 +70,7 @@ public class BaseDAOHibernate<T, ID extends Serializable> implements BaseDAO<T, 
 			Query<T> query = session.createQuery(queryStr);
 			return query.list();
 		} catch(HibernateException hibernateException) {
-			throw new PopulationException(hibernateException);
+			throw new ListObjectsException(hibernateException);
 		} finally {
 			session.close();
 		}	

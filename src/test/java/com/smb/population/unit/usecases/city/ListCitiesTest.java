@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import com.smb.population.dao.CityDAO;
 import com.smb.population.entities.City;
+import com.smb.population.exceptions.ListObjectsException;
 import com.smb.population.exceptions.PopulationException;
 import com.smb.population.usecases.city.ListCities.ListCities;
 import com.smb.population.usecases.city.ListCities.ListCitiesResponse;
@@ -26,10 +27,10 @@ public class ListCitiesTest {
 		this.listCities = new ListCities(cityDAO);		
 	}
 	
-	@Test(expected = PopulationException.class)
+	@Test(expected = ListObjectsException.class)
 	public void test_execute_givenAnErrorWhenListCities_expectThrowPopulationException() throws PopulationException {
 		
-		Mockito.doThrow(PopulationException.class).when(cityDAO).listAll();
+		Mockito.doThrow(ListObjectsException.class).when(cityDAO).listAll();
 		
 		this.listCities.execute();
 	}
