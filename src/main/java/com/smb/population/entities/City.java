@@ -2,10 +2,17 @@ package com.smb.population.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class City extends BaseEntity {
 
+	@ManyToOne
+	@JoinColumn(name="province", nullable=false)
 	private Province province;
-		
+	
+	@Column(name = "population", nullable = false)
 	private Integer population;
 	
 	public City() {
