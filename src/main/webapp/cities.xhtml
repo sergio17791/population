@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+      			xmlns:h="http://xmlns.jcp.org/jsf/html"
+      			xmlns:f="http://xmlns.jcp.org/jsf/core"
+      			xmlns:p="http://primefaces.org/ui"
+      			template="./WEB-INF/templates/main.xhtml">
+	<ui:define name="content">
+    	<h:form>
+        	<p:dataTable var="city" 
+        				 value="#{cities.list}"
+        				 styleClass="centeredDatatable"
+        				 rows="10"
+               			 paginator="true"
+               			 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+               			 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} páginas"
+               			 rowsPerPageTemplate="5,10,25,{ShowAll|'All'}"
+               			 paginatorPosition="top">
+				<f:facet name="header">
+        			Ciudades
+    			</f:facet>
+            	<p:column headerText="Nombre" 
+            			  style="width:40%"
+            			  filterBy="#{city.name}" 
+            			  sortBy="#{city.name}" >
+                	<h:outputText value="#{city.name}" />
+            	</p:column>
+            	<p:column headerText="Provincia" 
+            			  style="width:40%"
+            			  filterBy="#{city.province.name}" 
+            			  sortBy="#{city.province.name}" >
+                	<p:link value="#{city.province.name}" outcome="province">
+                		<f:param name="id" value="#{city.province.id}"/>
+                	</p:link>
+            	</p:column>
+            	<p:column headerText="Población" 
+            			  style="width:20%"
+            			  sortBy="#{city.population}" >
+                	<h:outputText value="#{city.population}" />
+            	</p:column>
+			</p:dataTable>
+    	</h:form>
+	</ui:define>
+</ui:composition>
