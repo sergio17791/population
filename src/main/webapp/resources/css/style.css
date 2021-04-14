@@ -1,0 +1,12 @@
+@charset "UTF-8";
+div.centeredDatatable{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+
+button.tableButton {
+	width: 90%;
+}
